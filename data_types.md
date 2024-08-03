@@ -17,7 +17,7 @@
 - This allows us to use **twice** as much space,
 because there are no negative numbers.
 
-## DECIMAL
+### DECIMAL
 - DECIMAL(5,2) => 5 max digits in total and 2 digits after decimal. e.g: 999.99 or 0.1
 
 ### FLOAT (4 bytes)
@@ -26,7 +26,7 @@ because there are no negative numbers.
 ### DOUBLE (8 bytes)
 - Precision issues ~ 15 digits
 
-## DATES
+### DATES
 - Date format: YYYY-MM-DD
 - Time Format: hh:mm:ss
 - Functions: CURTIME(), CURDATE(), NOW()

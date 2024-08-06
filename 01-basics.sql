@@ -30,5 +30,5 @@ SELECT * FROM customers;
 -- UPDATE DATA FROM TABLE:
 UPDATE customers SET last_name = 'Smith!!!' WHERE last_name = 'Smith';
 
--- DELET DATA FROM TABLE:
+-- DELETE DATA FROM TABLE:
 DELETE FROM customers WHERE first_name = 'Will';

@@ -1,4 +1,4 @@
-DROP DATABASE ig_clone;
+DROP DATABASE IF EXISTS ig_clone;
 CREATE DATABASE ig_clone;
 USE ig_clone;
 
@@ -73,31 +73,3 @@ CREATE TABLE photo_tags (
 );
 
 -- ===================================
--- ### DATA ###
-
-INSERT INTO users (username) VALUES
-('ArthurMarkiz'),
-('CharlieBrown'),
-('YuriPereira');
-
-INSERT INTO photos (image_url, user_id) VALUES
-('/afi23uha5sfuiw', 1),
-('/a1wiuhg3ifa', 2),
-('/aww8ry98qasd', 3);
-
-INSERT INTO comments (comment_text, user_id, photo_id) VALUES
-('Woow awesome!!!', 1, 3),
-('Amazing shot :D', 3, 1),
-('You have a good eye for that lol', 2, 1);
-
-INSERT INTO likes (user_id, photo_id) VALUES
-(1,1), (3,1), (2,1), (1,2), (1,3);
-
-INSERT INTO follows (follower_id, followee_id) VALUES
-(1, 2), (3, 1), (2, 1), (1, 3);
-
-INSERT INTO tags (tag_name) VALUES
-('cats'), ('cute'), ('funny');
-
-INSERT INTO photo_tags (photo_id, tag_id) VALUES
-(1, 1), (1, 2), (3, 3);

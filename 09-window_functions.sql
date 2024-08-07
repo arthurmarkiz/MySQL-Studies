@@ -48,10 +48,59 @@ SELECT emp_no, department, salary,
     SUM(salary) OVER() AS total_payroll
 FROM employees;
 
--- OVER(PARTITION BY ... ORDER BY ... )
+-- OVER(ORDER BY ... )
 SELECT emp_no, department, salary, 
     SUM(salary) OVER(PARTITION BY department ORDER BY salary) AS rolling_dept_payroll,
     SUM(salary) OVER(PARTITION BY department) AS total_dept_payroll
+FROM employees;
+
+-- =======================================================
+
+-- RANK()
+SELECT emp_no, department, salary,
+    RANK() OVER(ORDER BY salary DESC) AS overall_salary_rank
+FROM employees;
+
+-- =======================================================
+
+-- ROW_NUMBER()
+SELECT emp_no, department, salary,
+    ROW_NUMBER() OVER(ORDER BY salary DESC) AS overall_row_number
+FROM employees;
+
+-- =======================================================
+
+-- DENSE_RANK()
+SELECT emp_no, department, salary,
+    DENSE_RANK() OVER(ORDER BY salary DESC) AS overall_dense_rank
+FROM employees;
+
+-- =======================================================
+
+-- NTILE()
+SELECT emp_no, department, salary,
+    NTILE(4) OVER(ORDER BY salary DESC) AS salary_quartile,
+    NTILE(4) OVER(PARTITION BY department ORDER BY salary DESC) AS dept_salary_quartile
+FROM employees;
+
+-- =======================================================
+
+-- FIRST_VALUE()
+SELECT emp_no, department, salary,
+    FIRST_VALUE(emp_no) OVER(PARTITION BY department ORDER BY salary DESC) AS highest_paid_dept,
+    FIRST_VALUE(emp_no) OVER(ORDER BY salary DESC) AS highest_paid_overall
+FROM employees;
+
+-- =======================================================
+
+-- LAG() show previous value
+SELECT emp_no, department, salary,
+    salary - LAG(salary) OVER(ORDER BY salary DESC) AS salary_diff
+FROM employees;
+
+-- LEAD()
+SELECT emp_no, department, salary,
+    salary - LEAD(salary) OVER(ORDER BY salary DESC) AS salary_diff
 FROM employees;
 
 -- =======================================================
